@@ -1,0 +1,228 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API de Atendimento",
+    "description": "API para gerenciamento de telefones.",
+    "version": "0.0.1",
+    "termsOfService": "https:mockapi.io",
+    "contact": {
+      "name": "Suporte a Devs",
+      "url": "josefernando-dev.com.br",
+      "email": "josefernando1403@gmail.com"
+    }
+  },
+  "externalDocs": {
+    "description": "Documentação burocrática",
+    "url": "https://mockapi.io"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "paths": {
+    "/telefone": {
+      "get": {
+        "summary": "Recupera todos os telefones",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "dataCriacao": {
+                        "type": "object",
+                        "properties": {
+                          "date": {
+                            "type": "string"
+                          },
+                          "timezone_type": {
+                            "type": "integer"
+                          },
+                          "timezone": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "dataAtualizacao": {
+                        "type": "object",
+                        "properties": {
+                          "date": {
+                            "type": "string"
+                          },
+                          "timezone_type": {
+                            "type": "integer"
+                          },
+                          "timezone": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "ddd": {
+                        "type": "string"
+                      },
+                      "numero": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastra o telefone",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dataCriacao": {
+                    "type": "string"
+                  },
+                  "dataAtualizacao": {
+                    "type": "string"
+                  },
+                  "ddd": {
+                    "type": "string"
+                  },
+                  "numero": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Telefone foi inserido"
+          }
+        }
+      }
+    },
+    "/telefone/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Busca telefones por ID",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "dataCriacao": {
+                      "type": "object",
+                      "properties": {
+                        "date": {
+                          "type": "string"
+                        },
+                        "timezone_type": {
+                          "type": "integer"
+                        },
+                        "timezone": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "dataAtualizacao": {
+                      "type": "object",
+                      "properties": {
+                        "date": {
+                          "type": "string"
+                        },
+                        "timezone_type": {
+                          "type": "integer"
+                        },
+                        "timezone": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "ddd": {
+                      "type": "string"
+                    },
+                    "telefone": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuario não encontrado",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Altera o telefone por ID",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dataCriacao": {
+                    "type": "string"
+                  },
+                  "dataAtualizacao": {
+                    "type": "string"
+                  },
+                  "ddd": {
+                    "type": "string"
+                  },
+                  "telefone": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Telefone cadastrado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta o telefone por ID",
+        "responses": {
+          "204": {
+            "description": "Telefone foi deletado"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API de Atendimento",
+    "description": "API para gerenciamento de usuário e seus telefones.",
+    "version": "0.0.1",
+    "termsOfService": "https:mockapi.io",
+    "contact": {
+      "name": "Suporte a Devs",
+      "url": "josefernando-dev.com.br",
+      "email": "josefernando1403@gmail.com"
+    }
+  },
+  "externalDocs": {
+    "description": "Documentação burocrática",
+    "url": "https://mockapi.io"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "paths": {
+    "/usuario": {
+      "get": {
+        "summary": "Recupera todos os usuários",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "dataCriacao": {
+                        "type": "object",
+                        "properties": {
+                          "date": {
+                            "type": "string"
+                          },
+                          "timezone_type": {
+                            "type": "integer"
+                          },
+                          "timezone": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "dataAtualizacao": {
+                        "type": "object",
+                        "properties": {
+                          "date": {
+                            "type": "string"
+                          },
+                          "timezone_type": {
+                            "type": "integer"
+                          },
+                          "timezone": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "dataNascimento": {
+                        "type": "object",
+                        "properties": {
+                          "date": {
+                            "type": "string"
+                          },
+                          "timezone_type": {
+                            "type": "integer"
+                          },
+                          "timezone": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "listaTelefones": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastra usuário",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dataCriacao": {
+                    "type": "string"
+                  },
+                  "dataAtualizacao": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "dataNascimento": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "listaTelefones": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuário foi inserido"
+          }
+        }
+      }
+    },
+    "/usuario/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Busca usuarios por ID",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "dataCriacao": {
+                      "type": "object",
+                      "properties": {
+                        "date": {
+                          "type": "string"
+                        },
+                        "timezone_type": {
+                          "type": "integer"
+                        },
+                        "timezone": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "dataAtualizacao": {
+                      "type": "object",
+                      "properties": {
+                        "date": {
+                          "type": "string"
+                        },
+                        "timezone_type": {
+                          "type": "integer"
+                        },
+                        "timezone": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "nome": {
+                      "type": "string"
+                    },
+                    "dataNascimento": {
+                      "type": "object",
+                      "properties": {
+                        "date": {
+                          "type": "string"
+                        },
+                        "timezone_type": {
+                          "type": "integer"
+                        },
+                        "timezone": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "listaTelefones": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuario não encontrado",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Altera o usuário por ID",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dataCriacao": {
+                    "type": "string"
+                  },
+                  "dataAtualizacao": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "dataNascimento": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "listaTelefones": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Sucesso"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta usuário por ID",
+        "responses": {
+          "204": {
+            "description": "Usuário foi deletado"
+          }
+        }
+      }
+    }
+  }
+}
